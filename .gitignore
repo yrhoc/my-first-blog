@@ -8,3 +8,4 @@ db.sqlite3
 myenv
 python_intro.py
 blogenv
+htmlcov
