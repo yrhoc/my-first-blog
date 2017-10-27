@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from .models import Post
 from .forms import PostForm
 
@@ -30,7 +32,7 @@ def post_new(request):
             form = PostForm()
         return render(request, 'blog/post_new.html', {'form': form})
     else:
-        return redirect('post_list')
+        return HttpResponseRedirect(reverse('admin:index'))
 
 
 def post_edit(request, pk):
@@ -48,4 +50,4 @@ def post_edit(request, pk):
             form = PostForm(instance=post)
         return render(request, 'blog/post_new.html', {'form': form})
     else:
-        return redirect('post_list')
+        return HttpResponseRedirect(reverse('admin:index'))
